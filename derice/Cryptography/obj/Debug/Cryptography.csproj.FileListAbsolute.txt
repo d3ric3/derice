@@ -8,3 +8,8 @@ C:\Users\dericekong\Documents\GitHub\derice\Cryptography\bin\Debug\derice.crypto
 C:\Users\dericekong\Documents\GitHub\derice\Cryptography\obj\Debug\Cryptography.csprojResolveAssemblyReference.cache
 C:\Users\dericekong\Documents\GitHub\derice\Cryptography\obj\Debug\derice.cryptography.dll
 C:\Users\dericekong\Documents\GitHub\derice\Cryptography\obj\Debug\derice.cryptography.pdb
+C:\Users\Derice\Documents\GitHub\derice\Cryptography\obj\Debug\Cryptography.csprojResolveAssemblyReference.cache
+C:\Users\Derice\Documents\GitHub\derice\Cryptography\obj\Debug\derice.cryptography.dll
+C:\Users\Derice\Documents\GitHub\derice\Cryptography\obj\Debug\derice.cryptography.pdb
+C:\Users\Derice\Documents\GitHub\derice\Cryptography\bin\Debug\derice.cryptography.dll
+C:\Users\Derice\Documents\GitHub\derice\Cryptography\bin\Debug\derice.cryptography.pdb

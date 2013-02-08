@@ -31,6 +31,7 @@ namespace derice.office
             return rtnValues;
         }
 
+        //extract one object's properties 
         protected Dictionary<string,string> ExtractObjectProperties(Object obj, string DateTimeFormat = "dd/MM/yyyy")
         {
             Dictionary<string, string> rtnValues = new Dictionary<string, string>();
@@ -72,6 +73,16 @@ namespace derice.office
             }
 
             return rtnValues;
+        }
+
+        protected static List<Object> ConvertToObjectList(IEnumerable<Object> objs)
+        {
+            List<object> value = new List<object>();
+            foreach (var obj in objs)
+            {
+                value.Add(obj);
+            }
+            return value;
         }
     }
 }

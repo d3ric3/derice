@@ -14,3 +14,11 @@ C:\Users\dericekong\Documents\GitHub\derice\test\bin\Debug\test.pdb
 C:\Users\dericekong\Documents\GitHub\derice\test\bin\Debug\derice.office.dll
 C:\Users\dericekong\Documents\GitHub\derice\test\bin\Debug\derice.office.pdb
 C:\Users\dericekong\Documents\GitHub\derice\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+C:\Users\Derice\Documents\GitHub\derice\test\bin\Debug\test.exe.config
+C:\Users\Derice\Documents\GitHub\derice\test\obj\Debug\test.exe
+C:\Users\Derice\Documents\GitHub\derice\test\obj\Debug\test.pdb
+C:\Users\Derice\Documents\GitHub\derice\test\bin\Debug\test.exe
+C:\Users\Derice\Documents\GitHub\derice\test\bin\Debug\test.pdb
+C:\Users\Derice\Documents\GitHub\derice\test\bin\Debug\derice.office.dll
+C:\Users\Derice\Documents\GitHub\derice\test\bin\Debug\derice.office.pdb
+C:\Users\Derice\Documents\GitHub\derice\test\obj\Debug\test.csprojResolveAssemblyReference.cache
