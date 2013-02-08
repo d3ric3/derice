@@ -3,3 +3,8 @@ C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\Word Automation
 C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\Word Automation\obj\Debug\Office Word Automation.csprojResolveAssemblyReference.cache
 C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\Word Automation\obj\Debug\derice.office.dll
 C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\Word Automation\obj\Debug\derice.office.pdb
+C:\Users\dericekong\Documents\GitHub\derice\Word Automation\bin\Debug\derice.office.dll
+C:\Users\dericekong\Documents\GitHub\derice\Word Automation\bin\Debug\derice.office.pdb
+C:\Users\dericekong\Documents\GitHub\derice\Word Automation\obj\Debug\Office Word Automation.csprojResolveAssemblyReference.cache
+C:\Users\dericekong\Documents\GitHub\derice\Word Automation\obj\Debug\derice.office.dll
+C:\Users\dericekong\Documents\GitHub\derice\Word Automation\obj\Debug\derice.office.pdb

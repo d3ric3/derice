@@ -3,3 +3,8 @@ c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptog
 c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptography\obj\Debug\Cryptography.csprojResolveAssemblyReference.cache
 c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptography\obj\Debug\derice.cryptography.dll
 c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptography\obj\Debug\derice.cryptography.pdb
+C:\Users\dericekong\Documents\GitHub\derice\Cryptography\bin\Debug\derice.cryptography.dll
+C:\Users\dericekong\Documents\GitHub\derice\Cryptography\bin\Debug\derice.cryptography.pdb
+C:\Users\dericekong\Documents\GitHub\derice\Cryptography\obj\Debug\Cryptography.csprojResolveAssemblyReference.cache
+C:\Users\dericekong\Documents\GitHub\derice\Cryptography\obj\Debug\derice.cryptography.dll
+C:\Users\dericekong\Documents\GitHub\derice\Cryptography\obj\Debug\derice.cryptography.pdb
