@@ -1,0 +1,8 @@
+C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\test\bin\Debug\test.exe.config
+C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\test\bin\Debug\test.exe
+C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\test\bin\Debug\test.pdb
+C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\test\bin\Debug\derice.office.dll
+C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\test\bin\Debug\derice.office.pdb
+C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\test\obj\Debug\test.exe
+C:\Users\dericekong\Documents\Visual Studio 2012\Projects\derice\test\obj\Debug\test.pdb

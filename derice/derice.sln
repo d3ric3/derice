@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography", "Cryptography\Cryptography.csproj", "{E778C0A5-0860-4846-8EC4-0296C8416C02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office Word Automation", "Word Automation\Office Word Automation.csproj", "{3FDD21D7-0892-4F9F-884C-411B3849F469}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{52013CF7-55D7-4C4F-91AE-0D9B255D94D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E778C0A5-0860-4846-8EC4-0296C8416C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E778C0A5-0860-4846-8EC4-0296C8416C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E778C0A5-0860-4846-8EC4-0296C8416C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E778C0A5-0860-4846-8EC4-0296C8416C02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FDD21D7-0892-4F9F-884C-411B3849F469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FDD21D7-0892-4F9F-884C-411B3849F469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FDD21D7-0892-4F9F-884C-411B3849F469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FDD21D7-0892-4F9F-884C-411B3849F469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52013CF7-55D7-4C4F-91AE-0D9B255D94D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52013CF7-55D7-4C4F-91AE-0D9B255D94D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52013CF7-55D7-4C4F-91AE-0D9B255D94D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52013CF7-55D7-4C4F-91AE-0D9B255D94D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

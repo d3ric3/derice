@@ -1,0 +1,5 @@
+c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptography\bin\Debug\derice.cryptography.dll
+c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptography\bin\Debug\derice.cryptography.pdb
+c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptography\obj\Debug\Cryptography.csprojResolveAssemblyReference.cache
+c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptography\obj\Debug\derice.cryptography.dll
+c:\users\dericekong\documents\visual studio 2012\Projects\EncryptDecrypt\Cryptography\obj\Debug\derice.cryptography.pdb
