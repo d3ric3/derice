@@ -8,6 +8,8 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace test
 {
@@ -18,12 +20,26 @@ namespace test
             Dictionary<string, string> elements = new Dictionary<string, string>();
             elements.Add("Value1", "new_value1");
 
-            Word app = new Word(@"C:\Users\Derice\Desktop\abc.xml");
-            string content = app.ReplaceKeywords(elements, null);
-            using (System.IO.StreamWriter sw = new System.IO.StreamWriter(@"C:\Users\Derice\Desktop\temp.xml"))
-            {
-                sw.Write(content);
+            //Word app = new Word(@"C:\Users\Derice\Desktop\abc.xml");
+
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(@"C:\Users\Derice\Desktop\abc.xml");
+
+            XmlNamespaceManager namespaceManager = new XmlNamespaceManager(xmlDoc.NameTable);
+            namespaceManager.AddNamespace("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
+
+            XmlNodeList nodeList = xmlDoc.SelectNodes("//w:tbl/w:tr/w:tc/w:p/w:r/w:t[text()='Value4']", namespaceManager);
+
+            if (nodeList.Count == 1)
+            {                
+                XmlNode trNode = nodeList[0].ParentNode.ParentNode.ParentNode.ParentNode;
+                XmlNode tblNode = trNode.ParentNode;
+                XmlNode cloneNode = trNode.Clone();
+                cloneNode.InnerXml = cloneNode.InnerXml.Replace("Value4", "new_Value4");
+                tblNode.InsertBefore(cloneNode, tblNode.LastChild);
+                xmlDoc.Save(@"C:\Users\Derice\Desktop\temp.xml");
             }
+            
             Console.Write("done!");
             Console.Read();
         }

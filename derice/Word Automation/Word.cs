@@ -27,9 +27,20 @@ namespace derice.office
             //replace tabular data in a table
             if (dsTabularValues != null)
             {
+                for (int i = 0; i < dsTabularValues.Tables.Count; i++)
+                {
+                    foreach (DataRow dr in dsTabularValues.Tables[i].Rows)
+                    {
+                    }
+                }
             }
 
             return sb.ToString();
+        }
+
+        public StringBuilder ReplaceTabularKeywords(StringBuilder sbContent)
+        {
+            return sbContent;
         }
 
         protected Dictionary<string,string> ExtractMacroButton()
