@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -11,6 +12,25 @@ namespace derice.office
     {
         public Word(string path) : base(path) { }
         public Word(byte[] content) : base(content) { }
+
+        public string ReplaceKeywords(Dictionary<string, string> dicKeyValuePairs, DataSet dsTabularValues = null)
+        {
+            StringBuilder sb = new StringBuilder(XML_Content);
+
+            //replace flat data
+            foreach (var element in dicKeyValuePairs)
+            {
+
+                sb = sb.Replace(element.Key, element.Value);
+            }
+
+            //replace tabular data in a table
+            if (dsTabularValues != null)
+            {
+            }
+
+            return sb.ToString();
+        }
 
         protected Dictionary<string,string> ExtractMacroButton()
         {

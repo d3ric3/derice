@@ -51,7 +51,6 @@
     <Compile Include="Word.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="d3ric3.pfx" />
     <None Include="d3ric3.snk" />
   </ItemGroup>
   <ItemGroup>
