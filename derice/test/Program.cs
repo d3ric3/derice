@@ -29,9 +29,10 @@ namespace test
             namespaceManager.AddNamespace("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
 
             XmlNodeList nodeList = xmlDoc.SelectNodes("//w:tbl/w:tr/w:tc/w:p/w:r/w:t[text()='Value4']", namespaceManager);
-
+            XmlNodeList nodeBookmark = xmlDoc.SelectNodes("//w:tbl/w:tr/w:tc/w:p/w:bookmarkStart[@w:name='tblTest']", namespaceManager);
+            if (nodeBookmark.Count == 1) Console.WriteLine("Huat ar.."); Console.Read();
             if (nodeList.Count == 1)
-            {                
+            {
                 XmlNode trNode = nodeList[0].ParentNode.ParentNode.ParentNode.ParentNode;
                 XmlNode tblNode = trNode.ParentNode;
                 XmlNode cloneNode = trNode.Clone();
@@ -42,6 +43,19 @@ namespace test
             
             Console.Write("done!");
             Console.Read();
+        }
+
+        protected XmlNode GetTrNodeInTableByKeyword(XmlDocument doc, string keyInTableCell)
+        {
+            XmlNamespaceManager namespaceManager = new XmlNamespaceManager(doc.NameTable);
+            namespaceManager.AddNamespace("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
+
+            XmlNodeList nodeList = doc.SelectNodes(string.Format("//w:tbl/w:tr/w:tc/w:p/w:r/w:t[text()='{0}']", keyInTableCell), namespaceManager);
+
+            if (nodeList.Count > 0)
+                return nodeList[0].ParentNode.ParentNode.ParentNode.ParentNode;
+            else
+                return null;
         }
     }
 }

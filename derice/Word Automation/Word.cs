@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace derice.office
 {
@@ -20,8 +22,7 @@ namespace derice.office
             //replace flat data
             foreach (var element in dicKeyValuePairs)
             {
-
-                sb = sb.Replace(element.Key, element.Value);
+                sb = sb.Replace(string.Format("[{0}]", element.Key), element.Value);
             }
 
             //replace tabular data in a table
@@ -29,20 +30,93 @@ namespace derice.office
             {
                 for (int i = 0; i < dsTabularValues.Tables.Count; i++)
                 {
-                    foreach (DataRow dr in dsTabularValues.Tables[i].Rows)
-                    {
-                    }
+                    ReplaceTabularKeywords(sb, dsTabularValues.Tables[i]);
                 }
             }
 
             return sb.ToString();
         }
 
-        public StringBuilder ReplaceTabularKeywords(StringBuilder sbContent)
+        public StringBuilder ReplaceTabularKeywords(StringBuilder sbContent, DataTable dtKeyValue)
         {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(sbContent.ToString());
+
+            //get table tr (w:tr) by bookmark within table cell
+            XmlNode trNode = null;
+            trNode = GetTrNodeInTableByBookmarkName(doc, dtKeyValue.TableName);
+
+            //if table tr not found, continue to get table tr by keywords
+            if (trNode == null)
+            {
+                foreach (DataColumn column in dtKeyValue.Columns)
+                {
+                    trNode = GetTrNodeInTableByKeyword(doc, column.ColumnName);
+
+                    if (trNode != null) break;
+                }
+            }
+
+            //if table tr found
+            if (trNode != null)
+            {
+                XmlNode cloneTrNode = trNode.Clone();
+                XmlNode tblNode = trNode.ParentNode;
+
+                foreach (DataRow dr in dtKeyValue.Rows)
+                {
+                    foreach (DataColumn column in dtKeyValue.Columns)
+                    {
+                        string key = String.Format("[{0}]", column.ColumnName);
+                        string value = dr[column.ColumnName].ToString();
+                        cloneTrNode.InnerXml += cloneTrNode.InnerXml.Replace(key, value);
+                        tblNode.InsertBefore(cloneTrNode, tblNode.LastChild);
+                    }
+                }
+
+                tblNode.RemoveChild(trNode);
+            }
+
+            //convert modified XmlDocument to string
+            using (MemoryStream ms = new MemoryStream())
+            {
+                doc.Save(ms);
+                using (StreamReader sr = new StreamReader(ms))
+                {
+                    sbContent = new StringBuilder(sr.ReadToEnd());
+                }
+            }
+
             return sbContent;
         }
 
+        protected XmlNode GetTrNodeInTableByKeyword(XmlDocument doc, string keywordInTableCell)
+        {
+            XmlNamespaceManager namespaceManager = new XmlNamespaceManager(doc.NameTable);
+            namespaceManager.AddNamespace("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
+
+            XmlNodeList nodeList = doc.SelectNodes(string.Format("//w:tbl/w:tr/w:tc/w:p/w:r/w:t[text()='{0}']", keywordInTableCell), namespaceManager);
+
+            if (nodeList.Count > 0)
+                return nodeList[0].ParentNode.ParentNode.ParentNode.ParentNode;
+            else
+                return null;
+        }
+
+        protected XmlNode GetTrNodeInTableByBookmarkName(XmlDocument doc, string bookmarkName)
+        {
+            XmlNamespaceManager namespaceManager = new XmlNamespaceManager(doc.NameTable);
+            namespaceManager.AddNamespace("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
+
+            XmlNodeList nodeList = doc.SelectNodes(string.Format("//w:tbl/w:tr/w:tc/w:p/w:bookmarkStart[@w:name='{0}']", bookmarkName), namespaceManager);
+
+            if (nodeList.Count > 0)
+                return nodeList[0].ParentNode.ParentNode.ParentNode;
+            else
+                return null;
+        }
+
+        #region backup
         protected Dictionary<string,string> ExtractMacroButton()
         {
             Dictionary<string, string> rtnValues = new Dictionary<string, string>();
@@ -115,5 +189,6 @@ namespace derice.office
             }
             return value;
         }
+        #endregion
     }
 }
