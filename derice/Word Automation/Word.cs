@@ -30,14 +30,14 @@ namespace derice.office
             {
                 for (int i = 0; i < dsTabularValues.Tables.Count; i++)
                 {
-                    ReplaceTabularKeywords(sb, dsTabularValues.Tables[i]);
+                    sb = ReplaceTabularKeywords(sb, dsTabularValues.Tables[i]);
                 }
             }
 
             return sb.ToString();
         }
 
-        public StringBuilder ReplaceTabularKeywords(StringBuilder sbContent, DataTable dtKeyValue)
+        protected StringBuilder ReplaceTabularKeywords(StringBuilder sbContent, DataTable dtKeyValue)
         {
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(sbContent.ToString());
@@ -51,7 +51,7 @@ namespace derice.office
             {
                 foreach (DataColumn column in dtKeyValue.Columns)
                 {
-                    trNode = GetTrNodeInTableByKeyword(doc, column.ColumnName);
+                    trNode = GetTrNodeInTableByKeyword(doc, string.Format("[{0}]", column.ColumnName));
 
                     if (trNode != null) break;
                 }
@@ -59,31 +59,32 @@ namespace derice.office
 
             //if table tr found
             if (trNode != null)
-            {
-                XmlNode cloneTrNode = trNode.Clone();
+            {                
                 XmlNode tblNode = trNode.ParentNode;
 
                 foreach (DataRow dr in dtKeyValue.Rows)
                 {
+                    XmlNode cloneTrNode = trNode.Clone();
                     foreach (DataColumn column in dtKeyValue.Columns)
                     {
                         string key = String.Format("[{0}]", column.ColumnName);
                         string value = dr[column.ColumnName].ToString();
-                        cloneTrNode.InnerXml += cloneTrNode.InnerXml.Replace(key, value);
-                        tblNode.InsertBefore(cloneTrNode, tblNode.LastChild);
+                        cloneTrNode.InnerXml = cloneTrNode.InnerXml.Replace(key, value);                        
                     }
+                    tblNode.InsertBefore(cloneTrNode, tblNode.LastChild);
                 }
 
                 tblNode.RemoveChild(trNode);
             }
 
             //convert modified XmlDocument to string
-            using (MemoryStream ms = new MemoryStream())
+            using (StringWriter sw = new StringWriter())
             {
-                doc.Save(ms);
-                using (StreamReader sr = new StreamReader(ms))
+                using (XmlWriter xmltw = XmlWriter.Create(sw))
                 {
-                    sbContent = new StringBuilder(sr.ReadToEnd());
+                    doc.WriteTo(xmltw);
+                    xmltw.Flush();
+                    sbContent = sw.GetStringBuilder();                  
                 }
             }
 
