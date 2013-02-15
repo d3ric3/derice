@@ -42,11 +42,11 @@ namespace derice.office
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(sbContent.ToString());
 
-            //get table tr (w:tr) by bookmark within table cell
+            //get table row (w:tr) by bookmark within table cell
             XmlNode trNode = null;
             trNode = GetTrNodeInTableByBookmarkName(doc, dtKeyValue.TableName);
 
-            //if table tr not found, continue to get table tr by keywords
+            //if table row (w:tr) not found, continue to get table row by keywords
             if (trNode == null)
             {
                 foreach (DataColumn column in dtKeyValue.Columns)
@@ -57,7 +57,7 @@ namespace derice.office
                 }
             }
 
-            //if table tr found
+            //if table row found
             if (trNode != null)
             {                
                 XmlNode tblNode = trNode.ParentNode;
@@ -77,7 +77,7 @@ namespace derice.office
                 tblNode.RemoveChild(trNode);
             }
 
-            //convert modified XmlDocument to string
+            //convert modified XmlDocument to string builder
             using (StringWriter sw = new StringWriter())
             {
                 using (XmlWriter xmltw = XmlWriter.Create(sw))
@@ -91,8 +91,9 @@ namespace derice.office
             return sbContent;
         }
 
+        //get table row (w:tr) by keyword provided
         protected XmlNode GetTrNodeInTableByKeyword(XmlDocument doc, string keywordInTableCell)
-        {
+        {            
             XmlNamespaceManager namespaceManager = new XmlNamespaceManager(doc.NameTable);
             namespaceManager.AddNamespace("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
 
@@ -104,6 +105,7 @@ namespace derice.office
                 return null;
         }
 
+        //get table row (w:tr) by bookmark that is within same cell with keyword
         protected XmlNode GetTrNodeInTableByBookmarkName(XmlDocument doc, string bookmarkName)
         {
             XmlNamespaceManager namespaceManager = new XmlNamespaceManager(doc.NameTable);

@@ -46,8 +46,26 @@ namespace test
             dr3[1] = "500";
             dt.Rows.Add(dr3);
 
+            DataTable dt2 = new DataTable();
+            dt2.Columns.Add("product");
+            dt2.Columns.Add("price");
+
+            dt2.TableName = "tblTest2";
+
+            DataRow dr4 = dt2.NewRow();
+            dr4[0] = "i7 3770";
+            dr4[1] = "1200";
+            dt2.Rows.Add(dr4);
+
+            DataRow dr5 = dt2.NewRow();
+            dr5[0] = "i5 3310";
+            dr5[1] = "900";
+            dt2.Rows.Add(dr5);
+
+
             DataSet ds = new DataSet();
             ds.Tables.Add(dt);
+            ds.Tables.Add(dt2);
 
             string xmlContent = word.ReplaceKeywords(user, ds);
 
